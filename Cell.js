@@ -12,7 +12,7 @@ function Cell(i, j, cell_width) {
         rect(this.i, this.j, cell_width, cell_width);
 
         stroke(0);
-        strokeWeight(2)
+        strokeWeight(1)
         if (this.top_border) {
             line(this.i, this.j, this.i + this.cell_width, this.j);
         }
