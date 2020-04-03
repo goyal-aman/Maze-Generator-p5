@@ -18,10 +18,10 @@ function Cell(i, j, cell_width, color = [51, 51, 51]) {
     this.r = color[0];
     this.g = color[1];
     this.b = color[2];
-    this.SetColor = function (r, g, b) {
-        this.r = r;
-        this.g = g;
-        this.b = b;
+    this.SetColor = function (color = [51, 51, 51]) {
+        this.r = color[0];
+        this.g = color[1];
+        this.b = color[2];
     }
 
     this.Show = function () {
