@@ -11,8 +11,10 @@ var CurrentCellColor = [255, 15, 255];
 var HomeCell;
 var FinalCell;
 
+var donwloadCanvas = true;
+
 function setup() {
-	createCanvas(windowWidth, windowHeight);
+	var canvas = createCanvas(windowWidth, windowHeight);
 	console.log('width', width, 'height', height)
 	rows = floor(height / cell_width);
 	cols = floor(width / cell_width);
@@ -32,6 +34,7 @@ function setup() {
 	stack.push(current_cell); // step 1
 	// current_cell.visited = true;
 	// current_cell.SetColor(255, 255, 255)
+
 }
 
 function draw() {
@@ -71,7 +74,12 @@ function draw() {
 		HomeCell.Show();
 
 		FinalCell.SetColor([255, 0, 0]);
-		FinalCell.Show()
+		FinalCell.Show();
+
+		if (donwloadCanvas) {
+			saveCanvas(canvas, 'Maze', 'jpg');
+			donwloadCanvas = false;
+		}
 	}
 
 
