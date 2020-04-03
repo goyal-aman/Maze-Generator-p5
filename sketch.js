@@ -21,8 +21,8 @@ function setup() {
 
 	// restricting maximum no of cols to 40
 	// for performance and time
-	if (floor(windowWidth / cell_width) > 40) {
-		cell_width = floor(windowWidth / 40);
+	if (floor(width / cell_width) > 40) {
+		cell_width = floor(width / 40);
 	}
 
 	rows = floor(height / cell_width);
