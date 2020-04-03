@@ -49,7 +49,7 @@ function draw() {
 	}
 
 	current_cell.SetColor(VisitedCellColor)
-	if (stack.length) { // step 2
+	if (stack.length > 0) { // step 2
 		current_cell = stack.pop(); // 2.1
 		current_cell.visited = true;
 		current_cell.SetColor(CurrentCellColor);
