@@ -18,9 +18,17 @@ var donwloadCanvas = true;
 
 function setup() {
 	var canvas = createCanvas(windowWidth, windowHeight);
-	console.log('width', width, 'height', height)
+
+	// restricting maximum no of cols to 40
+	// for performance and time
+	if (floor(windowWidth / cell_width) > 40) {
+		cell_width = floor(windowWidth / 40);
+	}
+
 	rows = floor(height / cell_width);
 	cols = floor(width / cell_width);
+	console.log(cols, cell_width)
+
 
 	// creating grid
 	for (var j = 0; j < rows; j++) {
