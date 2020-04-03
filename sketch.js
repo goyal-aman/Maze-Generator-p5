@@ -9,6 +9,9 @@ var VisitedCellColor = [255, 255, 255];
 var CurrentCellColor = [255, 15, 255];
 
 var HomeCell;
+var homeX;
+var homeY;
+
 var FinalCell;
 
 var donwloadCanvas = true;
@@ -29,7 +32,10 @@ function setup() {
 		all_cells.push(col)
 	}
 
-	current_cell = all_cells[2][3];
+	homeX = floor(random(0, cols));
+	homeY = floor(random(0, rows));
+
+	current_cell = all_cells[homeY][homeX];
 	HomeCell = current_cell;
 	stack.push(current_cell); // step 1
 	// current_cell.visited = true;
@@ -73,7 +79,7 @@ function draw() {
 		HomeCell.SetColor([0, 255, 0]);
 		HomeCell.Show();
 
-		FinalCell.SetColor([255, 0, 0]);
+		FinalCell.SetColor([0, 0, 0]);
 		FinalCell.Show();
 
 		if (donwloadCanvas) {
