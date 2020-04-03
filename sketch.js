@@ -2,6 +2,7 @@ var rows, cols;
 var cell_width = 20;
 var all_cells = [];
 var current_cell;
+var stack = [];
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
@@ -20,12 +21,13 @@ function setup() {
 	}
 
 	current_cell = all_cells[2][3];
-	current_cell.visited = true;
-	current_cell.SetColor(255, 255, 255)
+	stack.push(current_cell); // step 1
+	// current_cell.visited = true;
+	// current_cell.SetColor(255, 255, 255)
 }
 
 function draw() {
-	// frameRate(5);
+	// frameRate(1	);
 	background(51);
 
 	for (var j = 0; j < rows; j++) {
@@ -35,15 +37,25 @@ function draw() {
 		}
 	}
 
-	next_cell = current_cell.FindNextCell(all_cells);
 
-	// if there are neighbor
-	if (next_cell) {
-		current_cell.SetColor(255, 15, 255)
-		next_cell.SetColor(255, 255, 255);
-		next_cell.visited = true;
-		current_cell = next_cell
+	if (stack.length) { // step 2
+		current_cell = stack.pop(); // 2.1
+		current_cell.visited = true;
+		current_cell.SetColor(255, 255, 255);
+
+		next_cell = current_cell.FindNextCell(all_cells); // step 2.2 and 2.2.2	
+		if (next_cell) { // if current cell has any un visited neighbor
+			stack.push(current_cell); // step 2.2.1
+			current_cell.SetColor(255, 15, 255)
+			current_cell.RemoveWallBetween(next_cell); // 2.2.3
+
+			next_cell.SetColor(255, 255, 255);
+			next_cell.visited = true;
+			stack.push(next_cell)
+		}
+
 	}
+
 
 
 }
