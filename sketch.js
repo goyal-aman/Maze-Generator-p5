@@ -3,9 +3,13 @@ var cell_width = 20;
 var all_cells = [];
 var current_cell;
 var stack = [];
+var stack_length_max = 0;
 
-var VisitedCellColor  = [255, 255, 255];
-var CurrentCellColor  = [255, 15, 255];
+var VisitedCellColor = [255, 255, 255];
+var CurrentCellColor = [255, 15, 255];
+
+var HomeCell;
+var FinalCell;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
@@ -24,13 +28,13 @@ function setup() {
 	}
 
 	current_cell = all_cells[2][3];
+	HomeCell = current_cell;
 	stack.push(current_cell); // step 1
 	// current_cell.visited = true;
 	// current_cell.SetColor(255, 255, 255)
 }
 
 function draw() {
-	// frameRate(1	);
 	background(51);
 
 	for (var j = 0; j < rows; j++) {
@@ -38,6 +42,10 @@ function draw() {
 			var cell = all_cells[j][i];
 			cell.Show()
 		}
+	}
+	if (stack.length > stack_length_max) {
+		stack_length_max = stack.length;
+		FinalCell = current_cell;
 	}
 
 	current_cell.SetColor(VisitedCellColor)
@@ -57,6 +65,13 @@ function draw() {
 			stack.push(next_cell)
 		}
 
+	} else {
+		console.log('aman')
+		HomeCell.SetColor([0, 255, 0]);
+		HomeCell.Show();
+
+		FinalCell.SetColor([255, 0, 0]);
+		FinalCell.Show()
 	}
 
 
