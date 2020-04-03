@@ -4,7 +4,8 @@ var all_cells = [];
 var current_cell;
 
 function setup() {
-	createCanvas(700, 700);
+	createCanvas(windowWidth, windowHeight);
+	console.log('width', width, 'height', height)
 	rows = floor(height / cell_width);
 	cols = floor(width / cell_width);
 
@@ -18,7 +19,7 @@ function setup() {
 		all_cells.push(col)
 	}
 
-	current_cell = all_cells[rows - 1][cols - 1];
+	current_cell = all_cells[2][3];
 	current_cell.visited = true;
 	current_cell.SetColor(255, 255, 255)
 }
@@ -29,7 +30,7 @@ function draw() {
 
 	for (var j = 0; j < rows; j++) {
 		for (var i = 0; i < cols; i++) {
-			var cell = all_cells[i][j];
+			var cell = all_cells[j][i];
 			cell.Show()
 		}
 	}
