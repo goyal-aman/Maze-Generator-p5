@@ -25,9 +25,14 @@ function setup() {
 		cell_width = floor(width / 40);
 	}
 
+
 	rows = floor(height / cell_width);
 	cols = floor(width / cell_width);
-	console.log(cols, cell_width)
+	
+	// restricting no of rows to 60, for performace and time
+	if (rows > 60) {
+		rows = 60;
+	}
 
 
 	// creating grid
@@ -83,7 +88,6 @@ function draw() {
 		}
 
 	} else {
-		console.log('aman')
 		HomeCell.SetColor([0, 255, 0]);
 		HomeCell.Show();
 
